@@ -1,0 +1,223 @@
+<body class="result-body" [style.background]="pagecolorbody">
+  <mat-toolbar [style.background]="pagecolorheader">
+    <!-- [style.backgroundImage]="imgheader" -->
+    <div *ngIf="imgheader">
+      <img class="toolbar" src="{{imgheader}}">
+    </div>
+    <mat-toolbar-row>
+      <button class="backspace" mat-icon-button>
+        <a routerLink="/cards">
+          <mat-icon class="backspace" aria-label="Keyboard backspace icon">
+            keyboard_backspace
+          </mat-icon>
+        </a>
+      </button>
+      <p class="backspacetitle">
+        {{pagetitle}}
+      </p>
+      <div *ngIf="pageicon">
+        <button class="round-button-icon" mat-flat-button disabled>
+          <img class="logo" src="{{pageicon}}" height="120">
+        </button>
+      </div>
+      <div *ngIf="imgicon">
+        <!-- <button class="round-button-icon" mat-flat-button disabled 
+          [style.backgroundImage]="'url(' + dataUrl + ')'">
+          </button> -->
+        <img class="image-icon" src="{{imgicon}}">
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <section fxLayout="row" fxLayoutAlign="center">
+    <mat-tab-group class="maintabs" mat-stretch-tabs>
+      <mat-tab label="QUESTIONS">
+        <p>coba</p>
+      </mat-tab>
+
+      <mat-tab label="RESPONSES">
+        <ng-template mat-tab-label>
+          RESPONSES
+        </ng-template>
+        <p class="left-top">{{totalres}} Response</p>
+        <div class="right-top">
+          <button class="section-btn" mat-icon-button type="button" [matMenuTriggerFor]="menusection"
+            aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menusection="matMenu" yPosition="below">
+            <button mat-menu-item type="button">Duplicate section</button>
+          </mat-menu>
+        </div>
+        <p class="divider">PEMBATAS</p>
+        <p class="blocker">l</p>
+        <!-- Mat Menu -->
+        <mat-tab-group class="childtabs" mat-align-tabs="start" [selectedIndex]="index">
+          <mat-tab label="HIGHVIEW" index=0>
+            <ng-template mat-tab-label>
+              <mat-icon (click)="index=0" class="high"> apps </mat-icon>
+            </ng-template>
+            <div class="right-top-d">
+              <button *ngIf="defaultPage > 1" mat-icon-button (click)="prevpage()">
+                <mat-icon> chevron_left </mat-icon>
+              </button>
+              {{defaultPage}} from {{totalpage}}
+              <button *ngIf="defaultPage < totalpage" mat-icon-button (click)="nextpage()">
+                <mat-icon> chevron_right </mat-icon>
+              </button>
+              <button *ngIf="defaultPage == totalpage" mat-icon-button disabled>
+                <mat-icon> chevron_right </mat-icon>
+              </button>
+            </div>
+            <mat-grid-list cols="3" rowHeight="3:1">
+              <mat-grid-tile *ngFor="let rest of tanggapan; let index=index;" >
+                <mat-card (click)="detailview(rest.responseIndex)"  
+                class="card-high" [style.background]="pagecolorheader">
+                  {{rest.respondent}}
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </mat-tab>
+          <mat-tab label="DETAILVIEW" index=1>
+            <ng-template mat-tab-label>
+              <mat-icon class="detail"> list </mat-icon>
+            </ng-template>
+
+            <div class="right-top-d">
+                <button mat-icon-button>
+                    <mat-icon> save_alt </mat-icon>
+                  </button>
+                <button *ngIf="defaultIndex > 0" mat-icon-button (click)="prev()">
+                  <mat-icon> chevron_left </mat-icon>
+                </button>
+                {{defaultIndex+1}} from {{totalres}}
+                <button *ngIf="defaultIndex < totalres-1" mat-icon-button (click)="next()">
+                  <mat-icon> chevron_right </mat-icon>
+                </button>
+                <button *ngIf="defaultIndex == totalres-1" mat-icon-button disabled>
+                  <mat-icon> chevron_right </mat-icon>
+                </button>
+              </div>
+            <div *ngFor="let page of pages">
+              <div class="page-container">
+
+                <div class="headertitle">
+                  <p [style.background]="pagecolorheader">{{page.title}}</p>
+                  <div class="headerdesc">
+                    <h3 class="mat-h3">{{page.desc}}</h3>
+                  </div>
+                </div> 
+
+                <mat-divider></mat-divider>
+                <!-- QUESTIONS -->
+                <div *ngFor="let question of page.questions">
+                  <div class="div-question-field">
+                      
+                    <div *ngIf="question.questionType !== 'TITLEDESCRIPTION'">
+                      <p class="questionlabel">{{question.question}}</p>
+                    </div>
+  
+                    <div *ngIf="question.imgQuestion !== null">
+                      <img src="{{question.imgQuestion}}" class="img-question">                                  
+                    </div>
+                    
+                    <div *ngIf="question.questionType === 'SHORT_ANSWER'">
+                      <mat-form-field class="shorttextwidth">
+                        <input 
+                          matInput
+                          value="{{question.answer}}" 
+                          disabled>
+                      </mat-form-field>
+                    </div>
+            
+                    <div *ngIf="question.questionType === 'LONG_ANSWER'" class="full-width">
+                      <mat-form-field class="full-width">
+                        <textarea matInput disabled value="{{question.answer}}"></textarea> 
+                      </mat-form-field>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'DATE_TYPE'">
+                      <mat-form-field>
+                        <input matInput value="{{question.dateAnswer}}" disabled>
+                      </mat-form-field>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'TIME_TYPE'">
+                      <mat-form-field>
+                        <input matInput
+                        type="time"
+                        value="{{question.answer}}" disabled> 
+                      </mat-form-field>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'MULTIPLE'">
+                      <mat-radio-group disabled
+                        class="page-radio-group"
+                        [(ngModel)]="question.answer">
+                        <mat-radio-button  
+                          class="page-radio-button"
+                          *ngFor="let val of question.values" 
+                          [value]="val.values">
+                          <div *ngIf="val.imgValue !== null">
+                            <img src="{{val.imgValue}}" class="img-value">                                  
+                          </div>
+                            <p>{{val.values}}</p>
+                        </mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'CHECKBOX'" class="group-checkbox">
+                      <div *ngFor="let val of question.values;let i=index">
+                        <div>
+                          <mat-checkbox disabled
+                            [(ngModel)]="val.checked" class="page-checkbox">
+                            <div *ngIf="val.imgValue !== null">
+                              <img src="{{val.imgValue}}" class="img-value-checkbox">                                  
+                            </div>
+                            <p>{{val.values}}</p>
+                          </mat-checkbox>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'DROPDOWN'">
+                      <mat-form-field>
+                      <mat-select box
+                      [(value)]="question.answer" disabled>
+                        <mat-option 
+                        *ngFor="let val of question.values" 
+                        value="{{val.values}}">
+                          {{ val.values }}
+                        </mat-option>
+                      </mat-select>
+                      </mat-form-field>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'PICTUREPAGE'">
+                      <div fxLayout="row" fxLayoutAlign="center">
+                        <img src="{{question.imgPage}}" class="img-pages" fxFlex>
+                      </div>
+                    </div>
+  
+                    <div *ngIf="question.questionType === 'TITLEDESCRIPTION'">
+                      <div class="titledesctype">
+                        <p>{{question.question}}</p>
+                        <h4 class="mat-h4">{{question.description}}</h4>
+                      </div>
+                    </div>
+  
+                    <mat-divider></mat-divider>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-tab>
+
+      <mat-tab label="DASHBOARD"></mat-tab>
+    </mat-tab-group>
+  </section>
+
+</body>

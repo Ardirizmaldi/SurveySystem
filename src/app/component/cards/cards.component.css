@@ -1,0 +1,278 @@
+::ng-deep body {
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  background-color: #fafafa;
+}
+
+mat-grid-list {
+  margin: 0 20px 0 20px;
+}
+
+.card-right {
+  position: relative;
+  top: 17px;
+  right: 20px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .card-right {
+    right: 0;
+  }
+}
+
+.card-right2 {
+  position: relative;
+  top: 17px;
+  left: 20px;
+}
+
+.option {
+  height: 60px;
+}
+
+.mat-card-full {
+  background-size: 200px 200px;
+  padding: 5px;
+  margin: 16px;
+}
+
+.item-card {
+  margin-bottom: 0px;
+  margin-top: 100px;
+  margin-left: 32px;
+  margin-right: 32px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.img-header {
+  width: 96vw;
+  left: 35px;
+  top: 60px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.img-dash {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-iconMy {
+  border-radius: 50%;
+  color: black;
+  width: 75px;
+  height: 78px;
+  position: relative;
+  right: 10px;
+  top: 15px;
+}
+
+.img-iconMy2 {
+  border-radius: 50%;
+  color: black;
+  width: 75px;
+  height: 78px;
+  position: relative;
+  left: 10px;
+  top: 15px;
+}
+
+.matbutton {
+  background-color: #505980;
+  position: absolute;
+  left: 92vw;
+  top: -20px;
+  box-shadow: 1px 5px 10px 0 rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+}
+
+.add {
+  color: white;
+  padding-top: 0px;
+  padding-bottom: 0px !important;
+}
+
+.iconMy {
+  color: black;
+  width: 75px;
+  position: relative;
+  right: 10px;
+  top: 17px;
+}
+
+.iconMy2 {
+  color: black;
+  width: 75px;
+  position: relative;
+  left: 10px;
+  top: 17px;
+}
+
+.mat-body-1 {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    "sans-serif";
+  margin-bottom: 0;
+  font-size: 20px;
+  width: 165px;
+}
+
+.mat-body-2 {
+  color: white;
+  font-family: "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  margin-bottom: -8px;
+  margin-top: 0;
+}
+
+.card-content {
+  margin-right: 20px;
+  margin-bottom: 18px;
+  margin-left: 25px;
+  margin-top: 20px;
+  padding-left: 23px;
+  background-color: #505980;
+  width: 20vw;
+  height: 12vh;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-content2 {
+  margin-right: 70px !important;
+  margin-bottom: 18px;
+  margin-left: 25px;
+  margin-top: 20px;
+  padding-left: 23px;
+  background-color: #505980;
+  width: 20vw;
+  height: 12vh;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+mat-tab {
+  background-size: 200px 200px;
+  display: block;
+  margin-top: 10%;
+  padding: 20px;
+}
+
+.mat-button {
+  margin: 8px;
+  padding: 0;
+}
+
+.pagination {
+  align-items: center;
+  float: right;
+  position: relative;
+  right: 20px;
+}
+
+.btn-pagination {
+  background-color: gray;
+  border-radius: 10px; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+::ng-deep .mat-menu-content {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: auto;
+  display: table;
+  overflow: hidden;
+}
+
+mat-radio-button {
+  display: inline-flex;
+}
+
+.menu-item {
+  position: absolute;
+}
+
+.status-survey {
+  text-align: right;
+}
+
+.status-assign {
+  text-align: right;
+}
+
+.img-icon {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  margin-top: 14px;
+}
+
+.menuIcon-i {
+  opacity: 0;
+  margin-top: 1px;
+  margin-right: 10px;
+  right: 60px;
+  top: 1;
+  bottom: 50px;
+}
+
+.menuIcon2-i {
+  opacity: 0;
+  right: -15px;
+  bottom: 10px;
+}
+
+.menuIcon-i:hover {
+  opacity: 1;
+}
+
+.menuIcon2-i:hover {
+  opacity: 1;
+}
+
+.menuIcon-1 {
+  margin-top: -38px;
+  margin-right: -43px;
+}
+
+.sortMy {
+  margin-top: 1px;
+  margin-left: 16px;
+}
+
+.update-status {
+  width: 50px;
+  border: 1px solid white;
+  font-size: 12px;
+  padding: 5px;
+  margin-bottom: -13px;
+  background-color: #fedb08;
+  color: white;
+  text-align: center;
+}
+
+.update-status-1 {
+  width: 52px;
+  border: 1px solid white;
+  font-size: 12px;
+  padding: 5px;
+  margin-bottom: -13px;
+  background-color: #53dd03;
+  color: white;
+  text-align: center;
+}

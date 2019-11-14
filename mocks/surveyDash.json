@@ -1,0 +1,225 @@
+{
+  "jmlPage": [
+    {
+      "id": 1,
+      "totalPages": 2,
+      "surveyView": [
+        {
+          "idSurvey": 4,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 1",
+          "colorHeader": null,
+          "icon": "assets/pict/pizza.svg",
+          "imgIcon": null,
+          "imgHeader": "https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 5,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 2",
+          "colorHeader": "#f8a978",
+          "icon": "assets/pict/pizza.svg",
+          "imgIcon": null,
+          "imgHeader": null,
+          "saveStatus": false,
+          "privateStatus": true,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 6,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 3",
+          "colorHeader": null,
+          "icon": null,
+          "imgIcon": "https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "imgHeader": "https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 7,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 4",
+          "colorHeader": "#OOFFFF",
+          "icon": "assets/pict/pizza.svg",
+          "imgIcon": null,
+          "imgHeader": null,
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 8,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 5",
+          "colorHeader": "#badfdb",
+          "icon": "assets/pict/pizza.svg",
+          "imgIcon": null,
+          "imgHeader": null,
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 9,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 6",
+          "colorHeader": null,
+          "icon": null,
+          "imgIcon":"https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "imgHeader":"https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 10,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 7",
+          "colorHeader": "#d1eecc",
+          "icon": "assets/pict/pizza.svg",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 11,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 8",
+          "colorHeader": "#ec9b3b",
+          "icon": "assets/pict/pizza.svg",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 12,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 9",
+          "colorHeader": "#fb8691",
+          "icon": "assets/pict/pizza.svg",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 13,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 10",
+          "colorHeader": "#fb8691",
+          "icon": "assets/pict/pizza.svg",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 14,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 11",
+          "colorHeader": "#fb8691",
+          "icon": null,
+          "imgIcon": "https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "imgHeader": "https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 5,
+          "lastModified": "2019-10-08T14:44:02.288",
+          "title": "form 2",
+          "colorHeader": "#f8a978",
+          "icon": "assets/pict/pizza.svg",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": true,
+          "activeStatus": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "totalPages": 2,
+      "surveyView": [
+        {
+          "idSurvey": 16,
+          "title": "form A",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": true
+        },
+        {
+          "idSurvey": 17,
+          "title": "form B",
+          "saveStatus": false,
+          "privateStatus": true,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 18,
+          "title": "form C",
+          "privateStatus": false,
+          "publishStatus": true,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 19,
+          "title": "form D",
+          "saveStatus": false,
+          "privateStatus": true,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 20,
+          "title": "form E",
+          "saveStatus": false,
+          "privateStatus": true,
+          "publishStatus": true,
+          "activeStatus": true
+        },
+        {
+          "idSurvey": 21,
+          "title": "form F",
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 22,
+          "title": "form G",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 23,
+          "title": "form H",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        },
+        {
+          "idSurvey": 24,
+          "title": "form I",
+          "saveStatus": false,
+          "privateStatus": false,
+          "publishStatus": false,
+          "activeStatus": false
+        }
+      ]
+    }
+  ]
+} 

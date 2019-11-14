@@ -1,0 +1,29 @@
+<mat-toolbar class="nav-item">
+  <div class="search-box">
+    <mat-icon>search</mat-icon>
+    <input class="search-txt" type="text" placeholder="Search Form" >
+  </div>
+
+  <span class="right-part"></span>
+  <div>
+    <button mat-icon-button matTooltip="home">
+      <mat-icon> home </mat-icon>
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button matTooltip="notifications">
+      <mat-icon> notifications </mat-icon>
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button (click)="profileDialog()">
+      <div *ngIf="pic">
+        <img class="avatar" [src]="pic">
+      </div>
+      <div *ngIf="!pic">
+        <img class="front" src="https://docs.atlassian.com/aui/8.2.0/docs/images/avatar-person.svg" alt=""
+          class="avatar">
+      </div>
+    </button>
+  </div>
+</mat-toolbar>

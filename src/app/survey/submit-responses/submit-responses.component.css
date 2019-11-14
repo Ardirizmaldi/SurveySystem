@@ -1,0 +1,220 @@
+::ng-deep html {
+  min-height: 100%;
+}
+
+::ng-deep body {
+  margin: 0;
+  background-color: #eeeef2;
+}
+
+body {
+  min-height: 100vh;
+}
+
+mat-toolbar {
+  height: 194px;
+  color: white;
+  background-color: #505980;
+  margin-bottom: 30px;
+}
+
+form {
+  text-align: justify;
+  color: gray;
+  background-color: white;
+  width: 45%;
+  margin-top: -56px;
+  background-color: white;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 100px;
+}
+
+button {
+  z-index: 2;
+}
+
+form {
+  z-index: 2;
+}
+
+.mat-h1 {
+  margin: 0;
+}
+
+.mat-h3 {
+  padding-top: 0 !important;
+  margin: 0;
+  line-height: 19px;
+  padding-right: 30px;
+}
+
+.headerdesc {
+  padding-bottom: 20px;
+}
+
+.toolbar {
+  height: 194px;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-icon {
+  position: absolute;
+  left: 7%;
+  top: 50px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  line-height: 80px;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+mat-form-field {
+  padding-left: 30px;
+  padding-bottom: 8px;
+}
+
+.page-radio-group {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+::ng-deep .page-radio-button {
+  margin: 5px;
+  white-space: normal !important;
+}
+
+::ng-deep .page-radio-button > * {
+  white-space: normal !important;
+}
+
+.group-checkbox {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  line-height: 19px;
+}
+
+::ng-deep .page-checkbox > * {
+  padding-bottom: 10px;
+  white-space: normal !important;
+}
+
+.questionlabel {
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: roboto;
+}
+
+.div-question-field {
+  padding-top: 30px;
+}
+
+.backspacetitle {
+  font-size: 16px;
+  z-index: 2;
+  margin-bottom: 25px;
+}
+
+.backicon {
+  color: white;
+}
+
+.headertitle h1 {
+  padding-left: 25px;
+  padding-top: 20px;
+  color: grey;
+}
+
+.headerdesc h3 {
+  padding-top: 10px;
+  padding-left: 30px;
+  color: grey;
+}
+
+.nav-button {
+  padding-top: 40px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.nav-prev {
+  margin-right: 10px;
+}
+
+.full-width {
+  width: 96%;
+}
+
+.round-button-icon {
+  position: absolute;
+  left: 7%;
+  top: 50px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  line-height: 80px;
+  border-radius: 50%;
+  padding-top: 25px;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.img-question {
+  /* width: 250px; */
+  height: 200px;
+  padding-left: 30px;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.img-value {
+  /* width: 150px; */
+  height: 100px;
+  padding-bottom: 5px;
+}
+
+.img-value-checkbox {
+  padding-top: 10px;
+  /* width: 150px; */
+  height: 100px;
+}
+
+.img-pages {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+  width: 100px;
+  /* height: 350px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titledesctype {
+  padding-left: 30px;
+  padding-bottom: 8px;
+}
+
+.titledesctype p {
+  font-size: 25px;
+  font-family: roboto;
+}

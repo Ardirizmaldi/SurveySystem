@@ -1,0 +1,61 @@
+image: docker:stable
+services:
+  - docker:dind
+
+stages:
+  - build
+#  - test
+  - package
+
+front-end-build:
+  image: 192.168.0.51:5000/node:10.0
+  stage: build
+  script:
+    - npm install
+    - npm run build --prod
+  cache:
+    key: npmcache
+    paths:
+      - ./node_modules/
+  artifacts:
+    paths:
+      - ./package.json
+      - ./dist/
+      - ./nginx.conf
+  only:
+    - frontend-6.0
+  tags:
+    - master
+
+#front-end-test:
+#  image: node:9.7-alpine
+#  stage: test
+#  script:
+#    - apk add --update nodejs nodejs-npm
+#    - yarn test:coverage
+#    - ls
+#    - yarn sonar
+#  cache:
+#    key: npmcache
+#    paths:
+#      - ./node_modules/
+#  artifacts:
+#    paths:
+#      - ./package.json
+#      - ./dist/
+#      - ./nginx.conf
+#      - ./coverage/
+#  tags:
+#     - master
+
+front-end-package:
+  stage: package
+  script:
+    - 'docker build --cache-from ${CI_REGISTRY}/${CI_PROJECT_PATH}/frontend:${CI_COMMIT_REF_NAME} -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/frontend:${CI_COMMIT_REF_NAME} .'
+    - 'docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/frontend:${CI_COMMIT_REF_NAME}'
+    - 'docker tag ${CI_REGISTRY}/${CI_PROJECT_PATH}/frontend:${CI_COMMIT_REF_NAME} ${CI_REGISTRY}/${CI_PROJECT_PATH}/frontend:latest'
+    - 'docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/frontend:latest'
+  only:
+    - frontend-6.0
+  tags:
+    - master

@@ -1,0 +1,212 @@
+<app-navbar></app-navbar>
+
+<body>
+  <img class="img-header" src="assets/pict/card-header.svg">
+  <mat-card class="item-card">
+    <button class="matbutton" mat-icon-button (click)="create()">
+      <mat-icon class="add">
+        add
+      </mat-icon>
+    </button>
+    <div class="main-tab-group">
+      <mat-tab-group>
+        <mat-tab label="My Survey">
+          <div class="status-survey">
+            <button matTooltip="Sorting" mat-icon-button [matMenuTriggerFor]="sorting">
+              <mat-icon>sort</mat-icon>
+            </button>
+            <mat-menu #sorting="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="sortdate">Sort By Date</button>
+              <button mat-menu-item [matMenuTriggerFor]="sortname">Sort By Name</button>
+            </mat-menu>
+
+            <mat-menu #sortdate="matMenu">
+              <button mat-menu-item (click)="oldest($event)">Oldest</button>
+              <button mat-menu-item (click)="newest($event)">Newest</button>
+            </mat-menu>
+
+            <mat-menu #sortname="matMenu">
+              <button mat-menu-item (click)="descending($event)">A-Z</button>
+              <button mat-menu-item (click)="ascending($event)">Z-A</button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="menuMy">
+              <mat-icon matTooltip="Filter" class="menuIcon">more_vert</mat-icon>
+            </button>
+            <mat-menu #menuMy="matMenu">
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button [value]="false" (change)="savedCards($event)">Saved</mat-radio-button>
+                <br>
+                <mat-radio-button [value]="false" (change)="publishedCards($event)">Published</mat-radio-button>
+              </mat-radio-group>
+            </mat-menu>
+          </div>
+          <div class="main-container layout">
+            <mat-grid-list cols="4" rowHeight="4:2">
+              <mat-grid-tile *ngFor="let dash of cards; let index=index;">
+                <mat-card mat-ripple class="card-content" [style.background]="dash.colorHeader"
+                  [style.backgroundImage]="dash.imgHeader" (click)="showsurvey(dash.idSurvey)">
+                  <div fxLayout="row">
+                    <div fxFlex="40" fxLayout="row" fxLayoutAlign="center center">
+                      <div *ngIf="dash.icon">
+                        <img class="iconMy" src="{{dash.icon}}">
+                      </div>
+                      <div *ngIf="dash.imgIcon">
+                        <img class="img-iconMy" src="{{dash.imgIcon}}">
+                      </div>
+                    </div>
+                    <!-- <div *ngIf="dash.imgHeader">
+                <img class="img-dash" src="{{dash.imgHeader}}">
+              </div> -->
+                    <div class="card-right">
+                      <div *ngIf="dash.publishStatus == false" class="update-status">
+                        Saved
+                      </div>
+                      <div *ngIf="dash.publishStatus == true" class="update-status-1">
+                        Published
+                      </div>
+                      <p class="mat-body-1">
+                        {{dash.title}}
+                      </p>
+                      <p class="mat-body-2">
+                        {{dash.lastModified}}
+                      </p>
+                    </div>
+
+                    <mat-card-action>
+                      <mat-menu #menu="matMenu">
+                        <button mat-icon-button (click)="delete(dash.idSurvey)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="duplicate(dash.idSurvey)">
+                          <mat-icon>file_copy</mat-icon> 
+                        </button>
+                        <button mat-icon-button>
+                          <mat-icon>share</mat-icon>
+                        </button>
+                      </mat-menu>
+                    </mat-card-action>
+                  </div>
+                </mat-card>
+                <button class="menuIcon-i" mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+            <div fxLayout="row" fxLayout="row wrap">
+              <app-bar-graph fxFlex="37.5" fxFlex.lt-sm="100" fxFlex.sm="50"></app-bar-graph>
+              <app-doughnut-graph fxFlex="37.5" fxFlex.lt-sm="100" fxFlex.sm="50"></app-doughnut-graph>
+              <app-line-graph fxFlex="25" fxFlex.lt-sm="100" fxFlex.sm="100"></app-line-graph>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Assign Survey">
+          <div class="status-assign">
+            <button mat-icon-button [matMenuTriggerFor]="sortAssign">
+              <mat-icon>sort</mat-icon>
+            </button>
+            <mat-menu #sortAssign="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="assignSortdate">Sort By Date</button>
+              <button mat-menu-item [matMenuTriggerFor]="assignSortname">Sort By Name</button>
+            </mat-menu>
+
+            <mat-menu #assignSortdate="matMenu">
+              <button mat-menu-item (click)="assignOldest($event)">Oldest</button>
+              <button mat-menu-item (click)="assignNewest($event)">Newest</button>
+            </mat-menu>
+
+            <mat-menu #assignSortname="matMenu">
+              <button mat-menu-item (click)="assignDescending($event)">A-Z</button>
+              <button mat-menu-item (click)="assignAscending($event)">Z-A</button>
+            </mat-menu>
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon class="menuIcon">more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <mat-radio-group aria-label="Select an option">
+                <!-- <mat-radio-button [value]="true" [checked]="true" (change)="privateCards($event)"
+                  (indeterminateChange)="privateCards($event)" [(checked)]="IsChecked" [disabled]="IsDisabled">
+                  Private
+                </mat-radio-button> -->
+                <!-- <mat-radio-button [value]="false" (change)="privateCards($event)">Private</mat-radio-button>
+                <br> -->
+                <mat-radio-button [value]="false" (change)="answeredCards($event)">Answered</mat-radio-button>
+                <br>
+                <mat-radio-button [value]="false" (change)="dismissedCards($event)">Dismissed</mat-radio-button>
+                <br>
+                <!-- <mat-radio-button [value]="false" (change)="publicCards($event)">Public</mat-radio-button> -->
+              </mat-radio-group>
+            </mat-menu>
+          </div>
+
+          <div class="main-container layout">
+            <mat-grid-list cols="4" rowHeight="4:2">
+              <mat-grid-tile *ngFor="let dash2 of cards2; let index=index;">
+                <mat-card mat-ripple class="card-content2" (click)="coba(dash2.idSurvey)"
+                  [style.background]="dash2.colorHeader" [style.backgroundImage]="dash2.imgHeader">
+                  <div fxLayout="row">
+                    <div fxFlex="40" fxLayout="row" fxLayoutAlign="center center">
+                      <div *ngIf="dash2.icon">
+                        <img class="iconMy2" src="{{dash2.icon}}">
+                      </div>
+                      <div *ngIf="dash2.imgIcon">
+                        <img class="img-iconMy2" src="{{dash2.imgIcon}}">
+                      </div>
+                    </div>
+                    <div class="card-right2">
+                      <div *ngIf="dash2.privateStatus == true" class="update-status">
+                        Private
+                      </div>
+                      <div *ngIf="dash2.publicStatus == true" class="update-status-1">
+                        Public
+                      </div>
+                      <div *ngIf="dash2.answeredStatus == true" class="update-status-2">
+                        Answered
+                      </div>
+                      <p class="mat-body-1">
+                        {{dash2.title}}
+                      </p>
+                      <p class="mat-body-2">
+                        {{dash2.lastModifiedAssign}}
+                      </p>
+                    </div>
+
+                    <mat-card-action>
+                      <button class="menuIcon2-i" mat-icon-button>
+                        <mat-icon mat-icon-button (click)="dismiss(dash2.idSurvey); $event.stopPropagation()">clear
+                        </mat-icon>
+                      </button>
+                    </mat-card-action>
+
+                  </div>
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+            <div fxLayout="row" fxLayout="row wrap">
+              <app-bar-graph fxFlex="37.5" fxFlex.lt-sm="100" fxFlex.sm="50"></app-bar-graph>
+              <app-doughnut-graph fxFlex="37.5" fxFlex.lt-sm="100" fxFlex.sm="50"></app-doughnut-graph>
+              <app-line-graph fxFlex="25" fxFlex.lt-sm="100" fxFlex.sm="100"></app-line-graph>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-card>
+  <div class="pagination" fxLayout="row">
+    <div *ngIf="hal <= 1">
+      <button mat-button (click)="previous()" disabled>
+        << Previous</button> </div> <div *ngIf="hal > 1">
+          <button mat-button (click)="previous()">
+            << Previous</button> </div> <div>
+              <button class="btn-pagination" *ngFor="let indexpage of pages; let index=index" (click)="page(indexpage)">
+                {{indexpage}}
+              </button>
+    </div>
+    <div *ngIf="jmlpage > hal">
+      <button mat-button (click)="next()">Next >></button>
+    </div>
+    <div *ngIf="jmlpage == hal">
+      <button mat-button (click)="next()" disabled>Next >></button>
+    </div>
+  </div>

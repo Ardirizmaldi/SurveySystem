@@ -1,0 +1,7 @@
+  {
+    "/api/*": {
+      "target": "http://192.168.25.11:8300",
+      "secure": false,
+      "logLevel": "debug"
+    }
+  }

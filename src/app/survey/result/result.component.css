@@ -1,0 +1,306 @@
+::ng-deep html {
+  min-height: 100vh;
+}
+
+::ng-deep body {
+  margin: 0;
+  background-color: #eeeef2;
+}
+
+body {
+  min-height: 100vh;
+}
+
+mat-toolbar {
+  height: 194px;
+  color: white;
+  background-color: #505980;
+  margin-bottom: 30px;
+}
+
+.headerdesc {
+  padding-bottom: 20px;
+}
+
+.mat-h3 {
+  padding-top: 0 !important;
+  margin: 0;
+  line-height: 19px;
+}
+
+.toolbar {
+  height: 194px;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+
+  margin-top: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.image-icon {
+  position: absolute;
+  left: 7%;
+  top: 50px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  line-height: 80px;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.maintabs {
+  width: 45%;
+  margin-top: -77px;
+  background-color: white;
+  border-radius: 10px !important;
+  z-index: 2;
+}
+
+.backspacetitle {
+  font-size: 16px;
+  z-index: 2;
+  margin-bottom: 25px;
+}
+
+.headertitle {
+  padding-top: 30px;
+}
+
+.headertitle p {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 25px;
+  color: white;
+  background-color: #505980;
+  font-size: 25px;
+  font-family: roboto;
+}
+
+.headerdesc h3 {
+  padding-left: 30px;
+  color: grey;
+}
+
+.full-width {
+  width: 96%;
+}
+
+.round-button-icon {
+  position: absolute;
+  left: 7%;
+  top: 50px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  line-height: 80px;
+  border-radius: 50%;
+  padding-top: 25px;
+  z-index: 2;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.img-question {
+  width: 250px;
+  height: 200px;
+  padding-left: 30px;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.img-value {
+  width: 150px;
+  height: 100px;
+  padding-bottom: 5px;
+}
+
+.img-value-checkbox {
+  padding-top: 10px;
+  width: 150px;
+  height: 100px;
+}
+
+.img-pages {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+  width: 100px;
+  /* height: 350px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titledesctype {
+  padding-left: 30px;
+  padding-bottom: 8px;
+}
+
+.titledesctype p {
+  font-size: 25px;
+  font-family: roboto;
+}
+
+.headerdesc {
+  height: 30px;
+  padding-bottom: 20px;
+}
+
+mat-form-field {
+  padding-left: 30px;
+  padding-bottom: 18px;
+}
+
+.shorttextwidth {
+  width: 90%;
+}
+
+.page-radio-group {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+::ng-deep .page-radio-button {
+  margin: 5px;
+  white-space: normal !important;
+}
+
+::ng-deep .page-radio-button > * {
+  white-space: normal !important;
+}
+
+.group-checkbox {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  line-height: 19px;
+  color: grey;
+}
+
+::ng-deep .page-checkbox > * {
+  padding-bottom: 10px;
+  white-space: normal !important;
+}
+
+.questionlabel {
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: roboto;
+}
+
+.div-question-field {
+  padding-top: 30px;
+  color: grey;
+}
+
+/* batas yusro */
+
+section {
+  text-align: justify;
+  color: gray;
+}
+
+.backspace {
+  z-index: 2;
+  color: white;
+}
+
+.detail {
+  margin-left: 2px;
+}
+
+.high {
+  margin-right: 2px;
+}
+
+mat-grid-list {
+  margin: 50px 20px 30px 20px;
+}
+
+.card-high {
+  cursor: pointer;
+  background-color: #505980;
+  color: white;
+  text-align: center;
+  width: 160px;
+  height: 30px;
+}
+
+.right-top-d {
+  margin-right: 37px;
+  float: right;
+}
+
+.right-top {
+  margin-right: 7px;
+  float: right;
+}
+
+.left-top {
+  margin-left: 20px;
+  float: left;
+  margin-right: auto;
+}
+
+.divider {
+  visibility: hidden;
+}
+
+.blocker {
+  position: absolute;
+  left: 44.5px;
+  font-size: 25px;
+  margin: 0;
+  top: 6.7vh;
+}
+
+::ng-deep .childtabs.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: transparent;
+}
+
+::ng-deep .childtabs .mat-tab-list {
+  margin-left: 10px;
+}
+
+::ng-deep .childtabs .mat-tab-header {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: none;
+}
+
+::ng-deep .childtabs .mat-tab-label,
+::ng-deep .childtabs .mat-tab-label-active {
+  min-width: 0 !important;
+  padding: 3px !important;
+  margin: 3px !important;
+}
+
+mat-icon {
+  padding: 0 !important;
+}

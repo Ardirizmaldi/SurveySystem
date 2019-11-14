@@ -1,0 +1,224 @@
+{
+  "survey": [
+  {
+      "id": 1,
+      "title": "Movie Survey",
+      "desc": "This is Survey for Movie",
+      "surveyType": "public",
+      "createdBy": "PMO",
+      "createdTime": null,
+      "theme": "horor",
+      "pub": true,
+      "pages": [
+          {
+              "id": 1,
+              "desc": "section 1",
+              "timer": 0,
+              "order": 1,
+              "questions": [
+                  {
+                      "id": 1,
+                      "question": "Apa genre film favorit kamu?",
+                      "questionType":"multiple choice",
+                      "imageUrl": "",
+                      "videoUrl": "",
+                      "weight": 0,
+                      "answerKey": "",
+                      "order": 0,
+                      "optionAnswers": [
+                          {
+                              "id": 1,
+                              "value": "A",
+                              "desc": "Telenovela"
+                          },
+                          {
+                              "id": 2,
+                              "value": "B",
+                              "desc": "Horror"
+                          },
+                          {
+                              "id": 3,
+                              "value": "C",
+                              "desc": "Anime"
+                          },
+                          {
+                              "id": 4,
+                              "value": "D",
+                              "desc": "Sinetron"
+                          }
+                      ]
+                  },
+                  {
+                      "id": 2,
+                      "question": "Apa Telenovela favorit kamu?",
+                      "questionType":"multiple choice",
+                      "imageUrl": "",
+                      "videoUrl": "",
+                      "weight": 0,
+                      "answerKey": "",
+                      "order": 0,
+                      "optionAnswers": [
+                          {
+                              "id": 5,
+                              "value": "A",
+                              "desc": "Amigos X Sempre"
+                          },
+                          {
+                              "id": 6,
+                              "value": "B",
+                              "desc": "Maria Bellen"
+                          },
+                          {
+                              "id": 7,
+                              "value": "C",
+                              "desc": "Carita de Angel"
+                          },
+                          {
+                              "id": 8,
+                              "value": "D",
+                              "desc": "Betty Lapea"
+                          }
+                      ]
+                  },
+                  {
+                      "id": 3,
+                      "question": "Berapa nilai untuk film sailormoon?",
+                      "questionType":"multiple choice",
+                      "imageUrl": "",
+                      "videoUrl": "",
+                      "weight": 0,
+                      "answerKey": "",
+                      "order": 0,
+                      "optionAnswers": [
+                          {
+                              "id": 9,
+                              "value": "A",
+                              "desc": ""
+                          },
+                          {
+                              "id": 10,
+                              "value": "B",
+                              "desc": ""
+                          },
+                          {
+                              "id": 11,
+                              "value": "C",
+                              "desc": ""
+                          },
+                          {
+                              "id": 12,
+                              "value": "D",
+                              "desc": ""
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "id": 2,
+              "desc": "section 2",
+              "timer": 0,
+              "order": 1,
+              "questions": [
+                  {
+                      "id": 1,
+                      "question": "Apa genre film favorit kamu?",
+                      "questionType":"multiple choice",
+                      "imageUrl": "",
+                      "videoUrl": "",
+                      "weight": 0,
+                      "answerKey": "",
+                      "order": 0,
+                      "optionAnswers": [
+                          {
+                              "id": 1,
+                              "value": "A",
+                              "desc": "Telenovela"
+                          },
+                          {
+                              "id": 2,
+                              "value": "B",
+                              "desc": "Horror"
+                          },
+                          {
+                              "id": 3,
+                              "value": "C",
+                              "desc": "Anime"
+                          },
+                          {
+                              "id": 4,
+                              "value": "D",
+                              "desc": "Sinetron"
+                          }
+                      ]
+                  },
+                  {
+                      "id": 2,
+                      "question": "Apa Telenovela favorit kamu?",
+                      "questionType":"multiple choice",
+                      "imageUrl": "",
+                      "videoUrl": "",
+                      "weight": 0,
+                      "answerKey": "",
+                      "order": 0,
+                      "optionAnswers": [
+                          {
+                              "id": 5,
+                              "value": "A",
+                              "desc": "Amigos X Sempre"
+                          },
+                          {
+                              "id": 6,
+                              "value": "B",
+                              "desc": "Maria Bellen"
+                          },
+                          {
+                              "id": 7,
+                              "value": "C",
+                              "desc": "Carita de Angel"
+                          },
+                          {
+                              "id": 8,
+                              "value": "D",
+                              "desc": "Betty Lapea"
+                          }
+                      ]
+                  },
+                  {
+                      "id": 3,
+                      "question": "Berapa nilai untuk film sailormoon?",
+                      "questionType":"multiple choice",
+                      "imageUrl": "",
+                      "videoUrl": "",
+                      "weight": 0,
+                      "answerKey": "",
+                      "order": 0,
+                      "optionAnswers": [
+                          {
+                              "id": 9,
+                              "value": "A",
+                              "desc": ""
+                          },
+                          {
+                              "id": 10,
+                              "value": "B",
+                              "desc": ""
+                          },
+                          {
+                              "id": 11,
+                              "value": "C",
+                              "desc": ""
+                          },
+                          {
+                              "id": 12,
+                              "value": "D",
+                              "desc": ""
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
+  }
+]
+}

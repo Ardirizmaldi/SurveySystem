@@ -1,0 +1,114 @@
+<div class="modal-header">
+  <h4 mat-dialog-title>Send Form
+    <button class="close" mat-icon-button (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h4>
+</div>
+<div mat-dialog-content>
+  <div class="modal-header-send">
+    Send with
+  </div>
+  <mat-tab-group class="header-tab">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>person_add</mat-icon>
+      </ng-template>
+      <!-- Content -->
+      <form id="formUser" [formGroup]="formUser" (ngSubmit)="sendUsername(formUser)" novalidate>
+        <div class="input-box" >
+          <mat-icon class="src-icon" matSuffix>search</mat-icon>
+          <input class="myInput" #myInputUsername matInput focused="'true'" type="text"
+            (keyup)="search($event.target.value, 'username')" autocomplete="off" placeholder="Search ID or Username">
+        </div>
+        <div class="header">
+          Send to
+        </div>
+        <mat-selection-list class="all" formControlName="userList" #list>
+          <mat-list-option class="select-all" (click)="selectAllUsername(infoUsername)" #infoUsername>
+            <b>Select All</b>
+          </mat-list-option>
+          <mat-divider></mat-divider>
+          <div class="scroll">
+            <mat-list-option (openedChange)="myInputUsername.focus()" *ngFor="let list of selectedUsername"
+              [value]="list">
+              {{list}}
+              <mat-divider class="divider"></mat-divider>
+            </mat-list-option>
+          </div>
+        </mat-selection-list>
+        <div class="modal-footer">
+          <label>{{formUser.value.userList.length}} selected</label>
+          <button type="button" mat-raised-button (click)="onCancel()">Cancel</button>
+          <button class="send-button" type="submit" mat-raised-button form="formUser">Send</button>
+        </div>
+      </form>
+      <!-- End of Content -->
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>local_post_office</mat-icon>
+      </ng-template>
+      <!-- Content -->
+      <form id="formPublish" [formGroup]="formPublish" (ngSubmit)="sendEmail(formPublish)" novalidate>
+        <mat-label>Email to :</mat-label>
+        <div class="input-box">
+          <mat-select formControlName="emailList" (openedChange)="myInputEmail.focus()" multiple>
+            <input class="input-email" #myInputEmail matInput focused="'true'" type="text"
+              (keyup)="search($event.target.value, 'email')" autocomplete="off" placeholder="search">
+            <mat-divider></mat-divider>
+            <mat-option [value]="1" (click)="selectAllEmail(infoEmail)" #infoEmail><b>Select All</b></mat-option>
+            <mat-option *ngFor="let list of selectedEmail" [value]="list">
+              {{list}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <mat-label>Subject :</mat-label>
+        <div class="input-box" >
+          <input matInput formControlName="subject">
+        </div>
+        <mat-label>Message :</mat-label>
+        <div class="input-box" >
+          <input matInput formControlName="emailBody">
+        </div>
+        <div class="modal-footer">
+          <button type="button" mat-raised-button (click)="onCancel()">Cancel</button>
+          <button class="send-button" type="submit" mat-raised-button form="formPublish">Send</button>
+        </div>
+      </form>
+      <!-- End of Content -->
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>code</mat-icon>
+      </ng-template>
+      <!-- Content -->
+      <mat-label>Embed HTML</mat-label>
+      <div class="input-box" >
+        <input matInput placeholder="Embed HTML" value="Embed HTML" #embedHtml>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" mat-raised-button (click)="onCancel()">Cancel</button>
+        <button class="send-button" type="button" mat-raised-button (click)="copyLink(embedHtml)"
+          value="click to copy">Copy</button>
+      </div>
+      <!-- End of Content -->
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>insert_link</mat-icon>
+      </ng-template>
+      <mat-label>Share Link</mat-label>
+      <div class="input-box" >
+        <input matInput placeholder="Share Link" value="Share Link" #shareLink>
+      </div>
+      <mat-checkbox>Shorten URL</mat-checkbox>
+      <div class="modal-footer">
+        <button type="button" mat-raised-button (click)="onCancel()">Cancel</button>
+        <button class="send-button" type="button" mat-raised-button (click)="copyLink(shareLink)"
+          value="click to copy">Copy</button>
+      </div>
+      <!-- End of Content -->
+    </mat-tab>
+  </mat-tab-group>
+</div>

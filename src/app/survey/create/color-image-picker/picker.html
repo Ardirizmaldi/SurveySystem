@@ -1,0 +1,107 @@
+
+<h5>Customize Theme</h5>
+<div class="border-group">
+    <span class="btn-file">
+        <mat-icon matTooltip="Add image header" class="image-header">photo</mat-icon>
+         Image Header
+        <input type="file" #imageInput accept="image/*" [(ngModel)]="data.imgHeader" multiple (change)="processFile(imageInput)">
+    </span>
+    <!-- <button class="but-header" mat-flat-button (click)="addPictureHeader()"> <mat-icon class="icon-button">photo</mat-icon>Image Header</button> -->
+</div>
+<div *ngIf="selectedFile">
+<image-cropper
+[imageBase64]="selectedFile.src"
+[maintainAspectRatio]="true"
+[aspectRatio]="8 / 1"
+[resizeToWidth]="1440"
+[cropperMinWidth]="1440"
+[resizeToHeight]="194"
+[cropperMinHeight]="194"
+[onlyScaleDown]="true"
+[roundCropper]="false"
+format="png"
+(imageCropped)="imageCropped($event)"
+(imageLoaded)="imageLoaded()"
+(loadImageFailed)="loadImageFailed()"
+[style.display]="showCropper ? null : 'none'"
+[alignImage]="'left'"
+></image-cropper>
+<img [src]="croppedImage"/>
+<button mat-flat-button class="save-crop" (click)="submit()">Save Crop</button>
+</div>
+
+<div class="border-group" >
+    <h5>Font Picker</h5>
+    <div class="font-picker" 
+    (fontPickerChange)="fontPickerChange($event)" 
+    [(fontPicker)]="font" 
+    [fpPresetLabel]="'Preset fonts'" 
+    [fpPresetFonts]="fontPick" 
+    [fpSearchText]="OFF" 
+    [fpSizeSelect]="OFF" 
+    [fpStyleSelect]="OFF">
+        <p *ngIf="!data.Font">
+            Roboto
+        </p>
+        <p *ngIf="data.Font">
+            {{data.Font}}
+        </p>
+    </div>
+</div>
+
+<div class="border-group">
+<h5>Header Color</h5>
+<mat-grid-list cols="5">
+    <mat-grid-tile><mat-icon class="col-1" (click)="confirmSelection1()">fiber_manual_record</mat-icon></mat-grid-tile>
+    <mat-grid-tile><mat-icon class="col-2" (click)="confirmSelection2()">fiber_manual_record</mat-icon></mat-grid-tile>
+    <mat-grid-tile><mat-icon class="col-3" (click)="confirmSelection3()" >fiber_manual_record</mat-icon></mat-grid-tile>
+    <mat-grid-tile><mat-icon class="col-4" (click)="confirmSelection4()">fiber_manual_record</mat-icon></mat-grid-tile>
+    <mat-grid-tile><mat-icon class="col-5" (click)="confirmSelection5()">fiber_manual_record</mat-icon></mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-flat-button matTooltip="Customize color"
+        [(colorPicker)]="data.ColorH"
+        [cpPosition]="'bottom-left'"
+        [cpCancelButton]="true"
+        [cpOutputFormat]="'hex'"
+        [cpCancelButtonClass]= "'mat-raised-button'"
+        [cpOKButton]="true"
+        [cpSaveClickOutside]="false"
+        [cpOKButtonClass]= "'mat-raised-button'"      
+        (colorPickerOpen)="onEventLog('colorPickerOpen', $event)" 
+        (colorPickerClose)="onEventLogH('colorPickerClose', $event)" 
+        (cpInputChange)="onEventLogi('cpInputChange', $event)"
+        >
+        <mat-icon class="addcolor">add_circle</mat-icon>
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
+
+<div class="border-group">
+<h5>Body Color</h5>
+<mat-grid-list cols="5">
+        <mat-grid-tile><mat-icon class="col-6" (click)="confirmSelection6()">fiber_manual_record</mat-icon></mat-grid-tile>
+        <mat-grid-tile><mat-icon class="col-7" (click)="confirmSelection7()">fiber_manual_record</mat-icon></mat-grid-tile>
+        <mat-grid-tile><mat-icon class="col-8" (click)="confirmSelection8()">fiber_manual_record</mat-icon></mat-grid-tile>
+        <mat-grid-tile><mat-icon class="col-9" (click)="confirmSelection9()">fiber_manual_record</mat-icon></mat-grid-tile>
+        <mat-grid-tile><mat-icon class="col-10" (click)="confirmSelection10()">fiber_manual_record</mat-icon></mat-grid-tile> 
+<mat-grid-tile>
+        <button mat-flat-button matTooltip="Customize color"
+          [(colorPicker)]="data.ColorB"
+          [cpOutputFormat]="'hex'"
+          [cpPosition]="'bottom-left'"
+          [cpCancelButton]="true"
+          [cpCancelButtonClass]= "'mat-raised-button'"
+          [cpOKButton]="true"
+          [cpSaveClickOutside]="false"
+          [cpOKButtonClass]= "'mat-raised-button'"
+          (colorPickerOpen)="onEventLog('colorPickerOpen', $event)" 
+          (colorPickerClose)="onEventLogB('colorPickerClose', $event)" 
+          (cpInputChange)="onEventLog('cpInputChange', $event)"    
+      >
+      <mat-icon class="addcolor">add_circle</mat-icon>
+      </button>
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
+

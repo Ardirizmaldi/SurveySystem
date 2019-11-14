@@ -1,0 +1,435 @@
+::ng-deep html {
+  min-height: 100vh;
+}
+
+::ng-deep body {
+  margin: 0; 
+  background-color: #eeeef2;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.error{
+  margin-left: 28px;
+  margin-top: -29px;
+  margin-bottom: 20px;
+}
+
+.error-question{
+  position: absolute;
+  left: 30px;
+  top: 290px;
+}
+
+mat-toolbar {
+  height: 230px;
+  color: white;
+  background-color: #505980;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+section {
+  padding-top: 192px;
+}
+mat-tab-group {
+  width: 45%;
+  margin-top: -46px;
+  background-color: white;
+  border-radius: 10px !important;
+}
+mat-form-field {
+  padding-top: 8px;
+  padding-left: 30px;
+  padding-bottom: 8px;
+  padding-right: 30px;
+}
+mat-slide-toggle {
+  margin: 10px;
+}
+mat-icon {
+  color: gray;
+}
+.toolbar {
+  filter: grayscale(1);
+  height: 194px;
+  color: white;
+  background-color: #505980;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Default-font {
+  color: gray;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+.btn-toolbar {
+  background-color: white;
+  color: black;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  position: absolute;
+  font-size: 14px;
+  width: 45%;
+  height: 25%;
+  text-align: center;
+  top: 172px;
+  left: 27.5%;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.image-header {
+  z-index: 1;
+}
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 1px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;   
+  cursor: inherit;
+  display: block;
+}
+.img-pages {
+  width: 550px;
+  height: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.img-question {
+  /* width:250px; */
+  height:200px;
+  padding-left: 30px;
+  padding-bottom: 5px;
+}
+.img-value {
+  /* width:150px; */
+  height:100px;
+  padding-left: 37px;
+}
+.title {
+  font-size: 18px;
+  padding-right: 30px;
+}
+
+.desc {
+  font-size: 12px;
+  position: relative;
+  bottom: 30px;
+}
+
+.mat-form-field-infix {
+  border-top: 0px solid transparent !important;
+}
+
+.icon-header {
+  color: white;
+  padding-top: 5px;
+}
+.initial-color {
+  background-color: #eeeef2;
+}
+.round-button {
+  color: #999;
+  position: absolute;
+  left: 7%;
+  top: 80px;
+  display:block;
+  width:120px;
+  height:120px;
+  line-height:80px;
+  border-radius: 50%;
+  padding-top: 25px;
+  z-index: 1;
+}
+
+.image-icon {
+  position: absolute;
+  left: 7%;
+  top: 50px;
+  display:block;
+  width:120px;
+  height:120px;
+  line-height:80px;
+  border-radius: 50%;
+  z-index: 5;
+}
+.round-button-icon {
+  position: absolute;
+  left: 7%;
+  top: 80px;
+  display:block;
+  width:120px;
+  height:120px;
+  line-height:80px;
+  border-radius: 50%;
+  padding-top: 25px;
+  z-index: 2;
+  background-size: 100% 100%;
+}
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.icons-addlogo {
+  color: black;
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  font-size: 2.2rem;
+  z-index: 2;
+}
+.radius-bottom {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: white;
+}
+.question-group {
+  border-top: groove;
+}
+
+.mat-card {
+  margin-bottom: 1px;
+  -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.15);
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.icon {
+  padding: 0 14px;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.buttons-card {
+  text-align: center;
+  width: 230px;
+  margin-left: 35%;
+  margin-bottom: 50px;
+  margin-top: 3px;
+}
+
+.bottom-form {
+  display: inherit;
+  background-color: #eeeef2;
+}
+
+.pages-photo {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.example-custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+::ng-deep .no-line .mat-form-field-underline {
+  display: none;
+}
+.no-line {
+  display: none;
+}
+.remove-button {
+  display: none;
+}
+.icon-photo-question {
+  display: none;
+}
+.button-actions {
+  text-align: right;
+  display: none;
+  border-top: ridge;
+}
+.QuestionFocus:focus-within {
+  -webkit-box-shadow: 0 -5px 5px 0 rgba(0, 0, 0, 0.15),
+    0 6px 15px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -5px 5px 0 rgba(0, 0, 0, 0.15),
+    0 6px 15px 0 rgba(0, 0, 0, 0.3);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  zoom: 100%;
+  border-left: solid;
+  border-left-color: blue;
+}
+.addoption {
+  color: blue;
+}
+.QuestionFocus:focus-within .button-actions {
+  display: block;
+}
+.QuestionFocus:focus-within .remove-button {
+  display: inline;
+}
+.QuestionFocus:focus-within .no-line {
+  display: block;
+}
+.QuestionFocus:focus-within .addoption {
+  display: block;
+}
+.QuestionFocus:focus-within .icon-photo-question {
+  display: inline;
+}
+.QuestionFocus:focus-within .button-actions .valid-menu {
+  display: block;
+}
+
+::ng-deep .material-icons {
+  padding-bottom: 13px;
+}
+::ng-deep .mat-select-panel {
+  max-height: none !important;
+}
+::ng-deep .select-content{
+  font-size: 14px;
+}
+::ng-deep .validate-value{
+  width: 60px;
+}
+::ng-deep .validate-setting{
+  width: 210px;
+}
+.header-section {
+  display: inline-block;
+}
+.section-btn{
+    float: right;
+    position: relative;
+}
+.section-tag {
+  float: left;
+  background-color: #505980;
+  color: #ffffff;
+  align-items: center;
+  padding: 8px 25px 8px 25px;
+}
+.section-btn {
+  float: right;
+  position: relative;
+}
+.multiple-type{
+  padding-left: 10px;
+}
+/* Create Survey - Response Tab */
+.response{
+  word-wrap: break-word;
+}
+.response-header{
+  background-color: #fff;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+}
+.header-section {
+  display: inline-block;
+}
+.section-btn{
+    float: right;
+    position: relative;
+}
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0.5;
+}
+.response-header-top{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  box-pack: justify;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.response-header-title{
+  font-size: 24px;
+  padding: 20px 24px 0 24px;
+}
+.response-header-button{
+  -webkit-box-align: start;
+  box-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 8px 8px 0 0;
+}
+.response-header-res{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  box-pack: justify;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 8px 24px;
+}
+.response-content{
+  border-top: groove;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0%;
+  padding-top: 25px;
+  padding-right: 32px;
+  padding-bottom: 0;
+  padding-left: 42px;
+  text-align: center;
+}
+/* Create Survey - Dashboard Tab */
+.dashboard{
+  word-wrap: break-word;
+}
+.dashboard-header{
+  background-color: #fff;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+}
+.dashboard-header-top{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  box-pack: justify;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.dashboard-header-title{
+  font-size: 24px;
+  padding: 20px 24px 0 24px;
+}
+.description-style{
+  width: 90%;
+}

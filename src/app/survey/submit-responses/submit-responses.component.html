@@ -1,0 +1,204 @@
+<body [style.background]="pagecolorbody">
+<mat-toolbar 
+[style.background]="pagecolorheader" >
+<!-- [style.backgroundImage]="imgheader" -->
+<div *ngIf="imgheader">
+  <img class="toolbar" src="{{imgheader}}" >
+</div>
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <a routerLink="/cards">
+        <mat-icon class="backicon" aria-label="Keyboard backspace icon">
+          keyboard_backspace
+        </mat-icon>
+      </a>
+    </button>
+    <p class="backspacetitle">
+      {{pagetitle}}
+    </p>
+    <div *ngIf="pageicon">
+      <button class="round-button-icon" mat-flat-button disabled>
+        <img class="logo" src="{{pageicon}}" height="120">
+      </button>
+    </div>
+    <div *ngIf="imgicon">
+        <!-- <button class="round-button-icon" mat-flat-button disabled 
+        [style.backgroundImage]="'url(' + dataUrl + ')'">
+        </button> -->
+        <img class="image-icon" src="{{imgicon}}" >
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="initial-color-body"  
+fxLayout="row" 
+fxLayoutAlign="center">
+  <form *ngIf="survey" 
+    id="formGroup" 
+    [formGroup]="formGroup"
+    (ngSubmit)="onSubmit(formGroup.value)">
+    <div class="headertitle">
+      <input type="hidden" formControlName="id">
+      <input type="hidden" formControlName="idSurvey">
+      <h1 class="mat-h1">{{survey.title}}</h1>
+      <div class="headerdesc">
+        <h3 class="mat-h3">{{survey.desc}}</h3>
+      </div>
+    </div> 
+    <mat-divider></mat-divider>
+  <!-- QUESTIONS -->  
+    <div formArrayName="questions">
+      <div *ngFor="let question of survey.questions; let j = index">
+        <div class="div-question-field">
+          <div formGroupName="{{j}}" fxLayout="column">
+            <input type="hidden" formControlName="id" [ngModel]="j">
+            
+            <div *ngIf="question.questionType !== 'TITLEDESCRIPTION'">
+              <p class="questionlabel">{{question.question}}</p>
+            </div>
+
+            <div *ngIf="question.imgQuestion !== null">
+              <img src="{{question.imgQuestion}}" class="img-question">                                  
+            </div>
+            
+            <div *ngIf="question.questionType === 'SHORT_ANSWER'">
+              <mat-form-field>
+                <input 
+                  matInput
+                  placeholder="Your Answer"
+                  formControlName="answer">
+                  <!-- <div *ngIf="err" fxFlex>
+                    <p>Username or password is incorrect</p>
+                  </div>  -->
+              </mat-form-field>
+            </div>
+    
+            <div *ngIf="question.questionType === 'LONG_ANSWER'" class="full-width">
+              <mat-form-field class="full-width">
+                <textarea matInput
+                  placeholder="Your Answer"
+                  formControlName="answer">
+                </textarea> 
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="question.questionType === 'DATE_TYPE'">
+              <mat-form-field>
+                <input 
+                  matInput
+                  [matDatepicker]="picker" 
+                  placeholder="Choose a date"
+                  formControlName="dateAnswer" 
+                  readonly (click)="picker.open()">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="question.questionType === 'TIME_TYPE'">
+                <mat-form-field>
+                  <input 
+                  type="time"
+                  matInput
+                  formControlName="answer"> 
+                </mat-form-field>
+              </div>
+
+            <div *ngIf="question.questionType === 'MULTIPLE'">
+                <mat-radio-group
+                  class="page-radio-group"
+                  formControlName="answer"
+                  [(ngModel)]="question.answer">
+                  <mat-radio-button 
+                    class="page-radio-button"
+                    *ngFor="let val of question.values" 
+                    [value]="val.values">
+                    <div *ngIf="val.imgValue !== null">
+                      <img src="{{val.imgValue}}" class="img-value">                                  
+                    </div>
+                    <p>{{val.values}}</p>
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+            <div *ngIf="question.questionType === 'CHECKBOX'" class="group-checkbox">
+              <div formArrayName="values">
+                <div *ngFor="let val of question.values;let i=index">
+                  <div formGroupName="{{i}}">
+                    <input type="hidden" formControlName="id" [ngModel]="i">
+                    <input type="hidden" formControlName="values" [ngModel]="val.values">
+                    <mat-checkbox
+                      formControlName="checked"
+                      [(ngModel)]="val.checked" class="page-checkbox">
+                      <div *ngIf="val.imgValue !== null">
+                        <img src="{{val.imgValue}}" class="img-value-checkbox">                                  
+                      </div>
+                      <p>{{val.values}}</p>
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="question.questionType === 'DROPDOWN'">
+              <mat-form-field>
+                <mat-label>Choose a Option</mat-label>
+              <mat-select box
+              [(value)]="question.values.values" 
+              formControlName="answer">
+                <mat-option 
+                *ngFor="let val of question.values" 
+                value="{{val.values}}">
+                  {{ val.values }}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="question.questionType === 'PICTUREPAGE'">
+              <div fxLayout="row" fxLayoutAlign="center">
+                <img src="{{question.imgPage}}" class="img-pages" fxFlex>
+              </div>
+            </div>
+
+            <div *ngIf="question.questionType === 'TITLEDESCRIPTION'">
+              <div class="titledesctype">
+                <p>{{question.question}}</p>
+                <h4 class="mat-h4">{{question.description}}</h4>
+              </div>
+            </div>
+
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="nav-button" fxLayout="row">
+      <div *ngIf="hal > 0">
+        <button type="button" mat-raised-button 
+        color="primary" 
+        (click)="previous()" 
+        class="nav-prev">PREV</button>
+      </div>
+      <div *ngIf="hal < totalpages">
+        <button mat-raised-button 
+        color="primary" 
+        form="formGroup" 
+        type="submit">NEXT</button>
+      </div>
+      <div *ngIf="hal == totalpages">
+        <button mat-raised-button 
+        color="primary" 
+        form="formGroup"
+        (click)="onSubmit2(formGroup)"
+        type="submit">SUBMIT</button>
+      </div>
+    </div>
+  <!-- QUESTIONS -->   
+  </form>  
+</section>
+ 
+  
+<!-- <pre>{{formGroup.value | json}}</pre> -->
+</body>

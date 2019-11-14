@@ -1,0 +1,164 @@
+::ng-deep .dialog-publish .mat-dialog-container {
+  padding: 0;
+}
+
+::ng-deep .header-tab mat-tab-header {
+  margin-left: 120px;
+  margin-bottom: 10px;
+}
+
+/* ::ng-deep .cdk-overlay-pane {
+  width: 300px;
+} */
+
+button {
+  margin-left: 10px;
+}
+
+mat-tab-group {
+  margin-top: 5px;
+}
+
+::ng-deep .all mat-selection-list {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+mat-divider {
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+  margin-bottom: 5px;
+}
+
+mat-label {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+mat-checkbox {
+  margin-left: 20px;
+}
+
+input {
+  padding: 10px 0;
+}
+
+mat-select {
+  padding: 10px 0;
+}
+
+.src-icon {
+  position: relative;
+  top: 15px;
+  left: 10px;
+  padding: 0;
+}
+
+.scroll {
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 3px;
+  background-color: #f5f5f5;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #4e5983;
+}
+
+.scroll mat-divider {
+  margin-left: 16px;
+  margin-right: auto;
+  width: 96.5%;
+}
+
+.header {
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+.select-all {
+  margin: 5px 0;
+}
+
+.modal-header {
+  background-color: #505980;
+  height: 52px;
+  width: auto;
+  color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.mat-dialog-title {
+  margin: 0 20px;
+  padding-top: 10px;
+}
+
+.modal-header-send {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 20px;
+  font-family: roboto;
+}
+
+.close {
+  float: right;
+}
+
+.mat-dialog-content {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-footer {
+  margin-right: 10px;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.myInput {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 97%;
+  margin-left: 45px;
+  margin-bottom: 0px;
+  position: relative;
+  bottom: 10px;
+  padding: 0px !important;
+}
+
+.input-email {
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.input-box {
+  background-color: #f2f2f2;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  width: 90%;
+}
+
+.form-publish {
+  width: 90%;
+  margin: 0 30px;
+}
+
+.send-button {
+  color: white;
+  background-color: #505980;
+}
+
+::ng-deep .input-box .mat-form-field-underline {
+  display: none;
+}

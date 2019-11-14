@@ -1,0 +1,29 @@
+{
+    "deleteSurvey": [
+        {
+            "idSurvey": 1,
+            "title": "form 1",
+            "colorHeader": "#202060",
+            "icon": "assets/pict/pizza.svg"
+        },
+        {
+            "idSurvey": 2,
+            "title": "form 2",
+            "colorHeader": "#f8a978",
+            "icon": "assets/pict/pizza.svg"
+        },
+        {
+            "idSurvey": 3,
+            "title": "form 2",
+            "colorHeader": "#f8a978",
+            "icon": "assets/pict/pizza.svg"
+        },
+        {
+            "idSurvey": 4,
+            "title": "form 2",
+            "colorHeader": "#f8a978",
+            "icon": "assets/pict/pizza.svg"
+        }
+     
+    ]
+}

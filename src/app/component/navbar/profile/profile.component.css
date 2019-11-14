@@ -1,0 +1,55 @@
+.mat-menu-item {
+  font-size: 16px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.setting-profile {
+  font-family: roboto;
+  margin-left: auto;
+  margin-right: auto;
+  color: gray;
+}
+
+.avatar {
+  border-radius: 50%;
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+}
+
+.user {
+  margin-left: 80px;
+  position: relative;
+  bottom: 30px;
+}
+
+h3 {
+  margin: 0;
+}
+
+.edit {
+  bottom: 25px;
+  left: 70px;
+}
+
+.details {
+  margin-top: 10px;
+}
+
+p {
+  margin-top: 0;
+}
+
+.top {
+  margin-bottom: 0;
+}
+
+
+.id-user {
+  text-align: center;
+}

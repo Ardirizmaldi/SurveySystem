@@ -1,0 +1,76 @@
+<section fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxLayout="column" fxFlex.xs="60%" class="background">
+    <button class="round-button" mat-flat-button [style.backgroundImage]="'url('+ imgProfile +')'"
+      (click)="addPictureProfile()">
+      <mat-icon class="photo">add_a_photo</mat-icon>
+    </button>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" fxLayout="column">
+      <mat-card-content fxLayout="column">
+        <mat-card-title fxFlex>
+          <h2 class="mat-h2">REGISTER</h2>
+        </mat-card-title>
+        <div *ngIf="imgProfile">
+          <img class="round-button" (click)="addPictureProfile()" [src]="imgProfile" />
+          <input matInput  type="text" formControlName="profile_picture" hidden/>
+        </div>
+        <mat-form-field appearance="standard" fxFlex>
+          <mat-icon matSuffix>person</mat-icon>
+          <input matInput placeholder="Username" type="text" formControlName="username" />
+        </mat-form-field>
+        <div>
+          <mat-form-field class="fn" appearance="standard" fxFlex>
+            <mat-icon class="icon-pos" matSuffix>account_circle</mat-icon>
+            <input matInput placeholder="First Name" type="text" formControlName="firstname" />
+          </mat-form-field>
+          <mat-form-field class="ln" appearance="standard" fxFlex>
+            <input class="ln-input" matInput placeholder="Last Name" type="text" formControlName="lastname" />
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="standard" fxFlex>
+          <mat-icon matSuffix>email</mat-icon>
+          <input matInput placeholder="Email" type="text" formControlName="email" />
+          <span *ngIf="(f.email.dirty || f.email.touched)
+           && f.email.invalid && f.email.errors.required">
+            Email is required</span>
+        </mat-form-field>
+        <mat-form-field appearance="standard" fxFlex>
+          <mat-icon matSuffix>lock</mat-icon>
+          <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off" />
+        </mat-form-field>
+        <div>
+          <mat-form-field class="date" appearance="standard">
+            <input 
+                  matInput
+                  [matDatepicker]="picker" 
+                  placeholder="Choose a date"
+                  formControlName="birthdate" 
+                  readonly (click)="picker.open()">
+                  <mat-datepicker-toggle class="cursor" matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="gender">
+            <mat-radio-group formControlName="gender">
+              <p class="titleGender">Gender</p>
+              <mat-radio-button class="radio" value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="center">
+        <button [disabled]="loading" mat-raised-button class="btn-primary">SIGN UP</button>
+        <mat-spinner *ngIf="loading" fxFLex="30%" [diameter]="40">
+        </mat-spinner>
+      </mat-card-actions>
+      <div class="mat-body" fxFlex>
+        <span class="mat-bodyb">Already have An Account ?</span>
+        <span class="mat-bodya"><a routerLink="/login">SIGN IN</a></span>
+      </div>
+      <div *ngIf="err" class="invalid-feedback">
+        <p>Username and Email already used</p>
+      </div>
+    </form>
+  </mat-card>
+</section>
+
+

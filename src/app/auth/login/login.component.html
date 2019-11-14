@@ -1,0 +1,46 @@
+<section fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxLayout="column" fxFlex.xs="60%" class="background">
+    <mat-card-title fxFlex>
+      <h2 class="mat-h2">UNIFORM</h2> 
+    </mat-card-title>
+    <img src="../../../assets/images/icon uniform2.svg" />
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
+      <mat-card-content fxLayout="column">
+        <mat-form-field appearance="standard">
+          <mat-icon matSuffix>person</mat-icon>
+          <input matInput placeholder="Username"
+          type="text"
+          class="field-input"
+          formControlName="username"/>
+        </mat-form-field>
+        <mat-form-field appearance="standard" fxFlex>
+          <mat-icon matSuffix>lock</mat-icon>
+          <input matInput placeholder="Password"
+          type="password"
+          class="field-input"
+          formControlName="password"
+          autocomplete="off"/>
+        </mat-form-field>
+        <div *ngIf="err" fxFlex>
+          <p>Username or password is incorrect</p>
+        </div>
+        <div fxFlex>
+          <span class="mat-body a"><a routerLink="/register">SIGN UP</a></span>
+          <span class="mat-body b"><a>Forgot password?</a></span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="center">
+        <button
+        fxFlex="20%"
+        [disabled]="loading"
+        mat-raised-button color= "primary"
+        class="btn-primary">Login</button>
+        <mat-spinner 
+        *ngIf="loading"
+        fxFLex="10%"
+        [diameter]="40">
+        </mat-spinner>
+      </mat-card-actions>
+    </form>
+  </mat-card> 
+</section>

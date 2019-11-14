@@ -1,0 +1,499 @@
+<body [style.background]="ColorB">
+
+  <mat-toolbar [style.background]="ColorH" [style.backgroundImage]="'url('+ imgHead +')'">
+    <!-- <img class="toolbar" src="../../../assets/icon/Animal1.svg" > -->
+    <mat-toolbar-row>
+      <button mat-icon-button matTooltip="Forms Home">
+        <a routerLink="/cards">
+          <mat-icon [ngStyle]="setMyStyles()" class="icon-header" aria-label="Keyboard backspace icon">keyboard_backspace</mat-icon>
+        </a>
+      </button>
+      <p [ngStyle]="setMyStyles()" *ngIf="title !== ''">
+        {{title}}
+      </p>
+      <p [ngStyle]="setMyStyles()" *ngIf="title === ''">
+        Untitled form
+      </p>
+      <span class="spacer"></span>
+      <button mat-icon-button matTooltip="Customize color" (click)="openDialogColor()">
+        <mat-icon [ngStyle]="setMyStyles()" class="icon-header" aria-label="Customize color">palette</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Preview">
+        <mat-icon [ngStyle]="setMyStyles()" class="icon-header" aria-label="Remove red eye icon">remove_red_eye
+        </mat-icon>
+      </button>
+      <button mat-flat-button class="Default-font"
+        (click)="onSubmit(formGroup)">Publish</button>
+      <div *ngIf="selectedLogo">
+        <button class="round-button-icon" mat-flat-button (click)="openDialogLogo()"><img class="logo"
+            src="../../../{{ selectedLogo }}" height="120"></button>
+      </div>
+      <div *ngIf="imgIcon">
+        <button class="round-button-icon" mat-flat-button (click)="openDialogLogo()"
+          [style.backgroundImage]="'url('+ imgI +')'"></button>
+      </div>
+      <button class="round-button" mat-flat-button (click)="openDialogLogo()">
+        <mat-icon class="icons-addlogo">add</mat-icon>Choose Logo
+      </button>
+      <!-- <img class="image-icon" src="../../../assets/icon/Animal1.svg" > -->
+      <span class="btn-toolbar">QUESTIONS</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!-- Question start here -->
+  <section [style.background]="ColorB" fxLayout="row" fxLayoutAlign="center">
+    <mat-tab-group mat-stretch-tabs cdkDropListGroup mat-align-tabs="center">
+
+      <mat-tab label="QUESTIONS">
+        <!-- SECTION -->
+        <form id="formGroup" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
+
+          <input type="hidden" formControlName="idSurvey" [ngModel]="idSurvey">
+          <input type="hidden" formControlName="fontPicker" [ngModel]="Font">
+          <input type="hidden" formControlName="colorHeader" [ngModel]="ColorH">
+          <input type="hidden" formControlName="colorBg" [ngModel]="ColorB">
+          <input type="hidden" formControlName="icon" [ngModel]="selectedLogo">
+          <input type="hidden" formControlName="imgHeader" [ngModel]="imgHeader">
+          <input type="hidden" formControlName="imgIcon" [ngModel]="imgIcon">
+
+          <!-- CONTENT OF SECTION -->
+          <div formArrayName="pages" *ngFor="let section of form.pages['controls']; let i = index">
+            <div class="radius-bottom">
+              <div formGroupName="{{i}}" fxLayout="column">
+                <!-- button header -->
+                <div class="header-section" fxFlex>
+                  <mat-label class="section-tag" [ngStyle]="setMyStyles()" [style.background]="ColorH">Section {{i + 1}} of
+                    {{form.pages['controls'].length}}</mat-label>
+                  <span class="spacer"></span>
+                  <button *ngIf="form.pages['controls'].length > 1" class="section-btn" mat-icon-button type="button"
+                    [matMenuTriggerFor]="menusection" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <!-- Mat Menu -->
+                  <mat-menu #menusection="matMenu" yPosition="below">
+                    <button mat-menu-item type="button">Duplicate section</button>
+                    <button mat-menu-item type="button" (click)="removepages(i)">Delete section</button>
+                    <button *ngIf="i >= 1" mat-menu-item type="button"
+                      (click)="mergeForm(i, j, section['controls'].questions['controls'].length, formGroup.value)">Merge
+                      with above</button>
+                  </mat-menu>
+                </div>
+                <!-- End of button header -->
+                <input type="hidden" formControlName="id" [ngModel]="i">
+                <mat-form-field class="title" *ngIf="i < 1" appearance="standard">
+                  <input [style.font-family]="Font" matInput placeholder="Form Title" value="Untitled" formControlName="title" [(ngModel)]="title">
+                </mat-form-field>
+                <mat-form-field class="title" *ngIf="i > 0" appearance="standard">
+                  <input [style.font-family]="Font" matInput placeholder="Form Title (Optional)" formControlName="title">
+                </mat-form-field>
+                <mat-error class="error">
+                  {{getpages(i)}}
+                </mat-error>
+                <mat-form-field class="desc" appearance="standard">
+                  <input [style.font-family]="Font" matInput placeholder="Form Description" formControlName="desc">
+                </mat-form-field>
+
+                <!-- QUESTIONS -->
+                <div cdkDropList (cdkDropListDropped)="drop($event)"
+                  [cdkDropListData]="section['controls'].questions['controls']" formArrayName="questions" fxFlex="100%">
+                  <div *ngFor="let question of section['controls'].questions['controls']; 
+                  let j=index" cdkDrag class="QuestionFocus">
+                    <div *cdkDragPlaceholder></div>
+                    <div formGroupName="{{j}}" fxLayout="column" class="question-group">
+                      <div [ngSwitch]="formGroup.value.pages[i].questions[j].questionType">
+                        <input type="hidden" formControlName="id" [ngModel]="j">
+
+                        <div *ngSwitchCase="'TITLEDESCRIPTION'">
+                          <mat-form-field appearance="standard">
+                            <input [style.font-family]="Font" matInput placeholder="Title" formControlName="question">
+                          </mat-form-field>
+                          <!-- <mat-error class="error-question">
+                            {{getQuestion('question',i,j)}}
+                          </mat-error> -->
+                          <mat-form-field class="description-style" appearance="standard">
+                            <input [style.font-family]="Font" matInput placeholder="Description (Optional)"
+                              formControlName="description">
+                          </mat-form-field>
+                        </div>
+
+                        <!-- Gambar -->
+                        <div *ngSwitchCase="'PICTUREPAGE'">
+                          <div>
+                            <mat-form-field fxFlex appearance="standard">
+                              <input [style.font-family]="Font" matInput placeholder="Title" formControlName="question">
+                            </mat-form-field>
+                            <!-- <mat-error class="error-question">
+                              {{getQuestion('question',i,j)}}
+                            </mat-error> -->
+                          </div>
+                          <img class="img-pages" [src]="formGroup.value.pages[i].questions[j].imgPage">
+                        </div>
+
+                        <div *ngSwitchDefault>
+                          <mat-form-field fxFlex appearance="standard">
+                            <input [style.font-family]="Font" matInput placeholder="Question"
+                              formControlName="question">
+                          </mat-form-field>
+                          <!-- <mat-error class="error-question">
+                            {{getQuestion('question',i,j)}}
+                          </mat-error> -->
+
+                          <mat-form-field fxFlex="40%" class="no-line" appearance="fill">
+                            <mat-label>Question Type</mat-label>
+                            <mat-select [(value)]="formGroup.value.pages[i].questions[j].questionType"
+                              formControlName="questionType" class="select-content">
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'SHORT_ANSWER'">
+                                <mat-icon>sort</mat-icon> &nbsp;Short answer
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'LONG_ANSWER'">
+                                <mat-icon>subject</mat-icon> &nbsp;Paragraph
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'MULTIPLE'">
+                                <mat-icon>radio_button_checked</mat-icon> &nbsp;Multiple choice
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'CHECKBOX'">
+                                <mat-icon>check_box</mat-icon> &nbsp;Checkboxes
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'DROPDOWN'">
+                                <mat-icon>arrow_drop_down_circle</mat-icon> &nbsp;Dropdown
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'FILE_UPLOAD'">
+                                <mat-icon>cloud_upload</mat-icon> &nbsp;File Upload
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'LINEAR_SCALE'">
+                                <mat-icon>linear_scale</mat-icon> &nbsp;Linear Scale
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'MULTI_CHOICE_MULTI'">
+                                <mat-icon>more_vert</mat-icon> &nbsp;Multiple choice grid
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'CHECKBOX_GRID'">
+                                <mat-icon>apps</mat-icon> &nbsp;Checkbox grid
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'DATE_TYPE'">
+                                <mat-icon>insert_invitation</mat-icon> &nbsp;Date
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'TIME_TYPE'">
+                                <mat-icon>access_time</mat-icon> &nbsp;Time
+                              </mat-select-trigger>
+                              <mat-select-trigger
+                                *ngIf="formGroup.value.pages[i].questions[j].questionType === 'EMOJI_TYPE'">
+                                <mat-icon>insert_emoticon</mat-icon> &nbsp;Emoji
+                              </mat-select-trigger>
+                              <mat-option *ngFor="let pil of option" value="{{pil.nilai}}">
+                                <mat-icon>{{ pil.icon }}</mat-icon>
+                                {{ pil.teks }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div *ngIf="formGroup.value.pages[i].questions[j].imgQuestion !== null">
+                        <img [src]="formGroup.value.pages[i].questions[j].imgQuestion" class="img-question">
+                      </div>
+
+                      <!-- Jawaban -->
+                      <div *ngIf="formGroup.value.pages[i].questions[j].questionType">
+                        <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'SHORT_ANSWER'">
+                          <div formArrayName="values">
+                            <div *ngFor="let val of question['controls'].values['controls']; let index = index">
+                              <div formGroupName="{{index}}">
+                                <input type="hidden" formControlName="id" [ngModel]="index">
+                                <mat-form-field>
+                                  <input matInput placeholder="short answer text" disabled>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div *ngIf="formGroup.value.pages[i].questions[j].validateStatus == true">
+                            <mat-form-field>
+                              <mat-label>Validate Type</mat-label>
+                              <mat-select formControlName="validateType">
+                                <mat-option value="NUMBER">Number</mat-option>
+                                <mat-option value="TEXT">Text</mat-option>
+                                <mat-option value="LENGTH">Length</mat-option>
+                                <mat-option value="REGEX">Regular expression</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'NUMBER'" class="validate-setting">
+                              <mat-label>Validate Setting</mat-label>
+                              <mat-select formControlName="validateSetting">
+                                <mat-option *ngFor="let opt of numberOption" value="{{opt.value}}">{{opt.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'TEXT'" class="validate-setting">
+                              <mat-label>Validate Setting</mat-label>
+                              <mat-select formControlName="validateSetting">
+                                <mat-option *ngFor="let opt of textOption" value="{{opt.value}}">{{opt.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'LENGTH'" class="validate-setting">
+                              <mat-label>Validate Setting</mat-label>
+                              <mat-select formControlName="validateSetting">
+                                <mat-option *ngFor="let opt of lengthOption" value="{{opt.value}}">{{opt.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'NUMBER' || formGroup.value.pages[i].questions[j].validateType == 'LENGTH'" class="validate-value">
+                              <input 
+                                matInput
+                                formControlName="validateValue" type="number">
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'TEXT'" class="validate-value">
+                              <input  
+                                matInput
+                                formControlName="validateValue" placeholder="Text">
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'LONG_ANSWER'">
+                          <div formArrayName="values">
+                            <div *ngFor="let val of question['controls'].values['controls']; let index = index">
+                              <div formGroupName="{{index}}">
+                                <input type="hidden" formControlName="id" [ngModel]="index">
+                                <mat-form-field>
+                                  <input matInput placeholder="long answer text" disabled>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div *ngIf="formGroup.value.pages[i].questions[j].validateStatus == true">
+                            <mat-form-field>
+                              <mat-label>Validate Type</mat-label>
+                              <mat-select formControlName="validateType">
+                                <mat-option value="NUMBER">Number</mat-option>
+                                <mat-option value="TEXT">Text</mat-option>
+                                <mat-option value="LENGTH">Length</mat-option>
+                                <mat-option value="REGEX">Regular expression</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'NUMBER'" class="validate-setting">
+                              <mat-label>Validate Setting</mat-label>
+                              <mat-select formControlName="validateSetting">
+                                <mat-option *ngFor="let opt of numberOption" value="{{opt.value}}">{{opt.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'TEXT'" class="validate-setting">
+                              <mat-label>Validate Setting</mat-label>
+                              <mat-select formControlName="validateSetting">
+                                <mat-option *ngFor="let opt of textOption" value="{{opt.value}}">{{opt.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'LENGTH'" class="validate-setting">
+                              <mat-label>Validate Setting</mat-label>
+                              <mat-select formControlName="validateSetting">
+                                <mat-option *ngFor="let opt of lengthOption" value="{{opt.value}}">{{opt.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'NUMBER' || formGroup.value.pages[i].questions[j].validateType == 'LENGTH'" class="validate-value">
+                              <input 
+                                matInput
+                                formControlName="validateValue" type="number">
+                            </mat-form-field>
+                            <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].validateType == 'TEXT'" class="validate-value">
+                              <input  
+                                matInput
+                                formControlName="validateValue" placeholder="Text">
+                            </mat-form-field>
+                            <!-- <div *ngIf="formGroup.value.pages[i].questions[j].validate.validateType == 'val-2'">
+                              <mat-form-field
+                                *ngIf="formGroup.value.pages[i].questions[j].validate.validateSetting == 'C' || formGroup.value.pages[i].questions[j].validate.validateSetting == 'DC'"
+                                class="validate-value">
+                                <input matInput formControlName="validateValue" placeholder="Text">
+                              </mat-form-field>
+                            </div> -->
+                          </div>
+                        </div>
+
+                        <div class="multiple-type"
+                          *ngIf="formGroup.value.pages[i].questions[j].questionType === 'MULTIPLE'">
+                          <div formArrayName="values">
+                            <div *ngFor="let val of question['controls'].values['controls']; let index = index">
+                              <div formGroupName="{{index}}">
+                                <input type="hidden" formControlName="id" [ngModel]="index">
+                                <mat-icon>radio_button_unchecked</mat-icon> &nbsp;
+                                <mat-form-field appearance="standard">
+                                  <input matInput placeholder="Option" formControlName="values">
+                                </mat-form-field>
+                                <button mat-icon-button type="button" matTooltip="Add picture"
+                                  (click)="addPictureValue(i,j,index)">
+                                  <mat-icon class="icon-photo-question">photo</mat-icon>
+                                </button>
+                                <div *ngIf="formGroup.value.pages[i].questions[j].values[index].imgValue !== null">
+                                  <img [src]="formGroup.value.pages[i].questions[j].values[index].imgValue"
+                                    class="img-value">
+                                </div>
+                                <button mat-icon-button type="button" matTooltip="Remove"
+                                  (click)="removeOption(i,j, index)">
+                                  <mat-icon class="remove-button">close</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                            <p><span (click)="addOption(i, j)" class="addoption">ADD OPTION</span></p>
+                          </div>
+                        </div>
+
+                        <div class="multiple-type"
+                          *ngIf="formGroup.value.pages[i].questions[j].questionType === 'CHECKBOX'">
+                          <div formArrayName="values">
+                            <div *ngFor="let val of question['controls'].values['controls']; let index = index">
+                              <div formGroupName="{{index}}">
+                                <input type="hidden" formControlName="id" [ngModel]="index">
+                                <mat-icon>check_box_outline_blank</mat-icon> &nbsp;
+                                <mat-form-field appearance="standard">
+                                  <input matInput placeholder="Option" formControlName="values">
+                                </mat-form-field>
+                                <button mat-icon-button type="button" matTooltip="Add picture"
+                                  (click)="addPictureValue(i,j,index)">
+                                  <mat-icon class="icon-photo-question">photo</mat-icon>
+                                </button>
+                                <div *ngIf="formGroup.value.pages[i].questions[j].values[index].imgValue !== null">
+                                  <img [src]="formGroup.value.pages[i].questions[j].values[index].imgValue"
+                                    class="img-value">
+                                </div>
+                                <button mat-icon-button matTooltip="Remove" (click)="removeOption(i,j, index)">
+                                  <mat-icon class="remove-button">close</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                            <p><span (click)="addOption(i, j)" class="addoption">ADD OPTION</span></p>
+                          </div>
+                        </div>
+
+                        <div class="multiple-type"
+                          *ngIf="formGroup.value.pages[i].questions[j].questionType === 'DROPDOWN'">
+                          <div formArrayName="values">
+                            <div *ngFor="let val of question['controls'].values['controls']; let index = index">
+                              <div formGroupName="{{index}}">
+                                <input type="hidden" formControlName="id" [ngModel]="index">
+                                <span>{{index + 1}}</span> &nbsp;
+                                <mat-form-field appearance="standard">
+                                  <input matInput placeholder="Option" formControlName="values">
+                                </mat-form-field>
+                                <button mat-icon-button type="button" matTooltip="Remove"
+                                  (click)="removeOption(i,j, index)">
+                                  <mat-icon class="remove-button">close</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                            <p><span (click)="addOption(i, j)" class="addoption">ADD OPTION</span></p>
+                          </div>
+                        </div>
+
+                        <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'FILE_UPLOAD'">
+                        </div>
+
+                        <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'LINEAR_SCALE'">
+                        </div>
+
+                        <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'MULTI_CHOICE_MULTI'">
+                        </div>
+
+                        <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'CHECKBOX_GRID'">
+                        </div>
+
+                        <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].questionType === 'DATE_TYPE'">
+                          <input matInput [matDatepicker]="picker" placeholder="Month, day, year" disabled>
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field *ngIf="formGroup.value.pages[i].questions[j].questionType === 'TIME_TYPE'">
+                          <input matInput placeholder="Time" disabled>
+                          <mat-icon matSuffix>access_time</mat-icon>
+                        </mat-form-field>
+                      </div>
+
+                      <div *ngIf="formGroup.value.pages[i].questions[j].questionType === 'EMOJI_TYPE'">
+
+                      </div>
+                      <!-- End of Jawaban -->
+
+                      <div class="button-actions" fxFlex>
+                        <button mat-icon-button type="button" matTooltip="Add picture"
+                          (click)="addPictureQuestion(i,j)">
+                          <mat-icon>photo</mat-icon>
+                        </button>
+                        <button mat-icon-button type="button" matTooltip="Duplicate" (click)="duplicateQuestion(i,j)">
+                          <mat-icon>filter_none</mat-icon>
+                        </button>
+                        <button mat-icon-button type="button" matTooltip="Delete" (click)="removequestions(i, j)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button type="button" matTooltip="Split section"
+                          (click)="splitForm(i, j, section['controls'].questions['controls'].length, form.pages['controls'].length, formGroup.value)">
+                          <mat-icon>vertical_align_bottom</mat-icon>
+                        </button>
+                        <mat-slide-toggle formControlName="requiredValue" color="primary">Wajib diisi</mat-slide-toggle>
+                        <button mat-icon-button type="button" [matMenuTriggerFor]="menuRequired"
+                          aria-label="Example icon-button with a menu">
+                          <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <!-- Mat Menu -->
+                        <mat-menu #menuRequired="matMenu" yPosition="below">
+                          <button
+                            class="valid-menu"
+                            *ngIf="formGroup.value.pages[i].questions[j].questionType == 'SHORT_ANSWER' || formGroup.value.pages[i].questions[j].questionType == 'LONG_ANSWER'"
+                            mat-menu-item type="button" (click)="addRequired(i, j, 'true')">Response validation</button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END OF QUESTIONS -->
+
+                <!-- Gambar -->
+                <div [style.background]="ColorB" class="bottom-form">
+                  <mat-card class="buttons-card">
+                    <mat-card-actions fxFlex>
+                      <button mat-icon-button type="button" matTooltip="Add question"
+                        (click)="addquestions(i, formGroup.value)">
+                        <mat-icon>add_circle</mat-icon>
+                      </button>
+                      <button mat-icon-button type="button" matTooltip="Add title and description"
+                        (click)="addTitle(i)">
+                        <mat-icon>text_fields</mat-icon>
+                      </button>
+                      <button mat-icon-button type="button" matTooltip="Add picture" (click)="addPicturePages(i,j)">
+                        <mat-icon>photo</mat-icon>
+                      </button>
+                      <button mat-icon-button type="button" matTooltip="Add video">
+                        <mat-icon>video_call</mat-icon>
+                      </button>
+                      <button mat-icon-button type="button" matTooltip="Add section"
+                        (click)="addpages(formGroup.value)">
+                        <mat-icon>view_agenda</mat-icon>
+                      </button>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+                <!-- End of Gambar -->
+              </div>
+            </div>
+          </div>
+          <!-- END OF CONTENT OF SECTION -->
+        </form>
+        <!-- END OF SECTION -->
+      </mat-tab>
+    </mat-tab-group>
+  </section> 
+</body>

@@ -1,0 +1,30 @@
+<div class="setting-profile">
+  <button class="edit" mat-icon-button>
+    <mat-icon>create</mat-icon>
+  </button>
+  <div class="avatar" *ngIf="data.profile_photo">
+    <img class="avatar" [src]="data.profile_photo">
+  </div>
+  <div class="avatar" *ngIf="!data.profile_photo">
+    <img class="avatar" src="https://docs.atlassian.com/aui/8.2.0/docs/images/avatar-person.svg">
+  </div>
+
+  <div class="user">
+    <h3>{{data.firstname}}</h3>
+    <!-- <p class="id-user">ID : {{data.user_id}}</p> -->
+  </div>
+  <div class="details">
+    <p class="top">Full Name </p>
+    <p>{{data.fullname}}</p>
+    <p class="top">Date of Birth </p>
+    <p>{{data.birthdate}}</p>
+    <p class="top">Email </p>
+    <p>{{data.email}}</p>
+  </div>
+  <button mat-menu-item>
+    Setting
+  </button>
+  <button mat-menu-item (click)="logout()">
+    Sign Out
+  </button>
+</div>
